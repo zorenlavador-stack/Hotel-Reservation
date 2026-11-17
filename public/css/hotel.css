@@ -1,0 +1,434 @@
+/* ==========================================================
+   GRAND STAY - styles
+   Colors: navy #14213d, gold #d4a017, page background #f8f9fc
+   ========================================================== */
+
+/* ---------- BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fc;
+    color: #1b263b;
+    line-height: 1.5;
+}
+a {
+    color: #14213d;
+}
+
+/* ---------- NAVBAR (landing + app pages) ---------- */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: #fff;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #14213d;
+    text-decoration: none;
+}
+.logo span {
+    color: #d4a017;
+}
+.nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.nav-user {
+    font-size: 14px;
+    color: #555;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+    display: inline-block;
+    padding: 11px 22px;
+    background: #14213d;
+    color: #fff !important;
+    border: 0;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #1d2f55;
+}
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.btn-outline {
+    background: transparent;
+    color: #14213d !important;
+    border: 1px solid #14213d;
+}
+.btn-full {
+    width: 100%;
+    margin-top: 8px;
+}
+.card .btn {
+    margin-top: 18px;
+}
+
+/* ---------- FORMS ---------- */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 14px 0 6px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cfd4de;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fff;
+}
+input:focus,
+select:focus {
+    outline: 2px solid #d4a017;
+    border-color: #d4a017;
+}
+.check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    margin: 12px 0;
+}
+.check input {
+    width: auto;
+}
+.field-error {
+    display: block;
+    color: #b42318;
+    font-size: 13px;
+    margin-top: 4px;
+}
+.muted {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* ---------- ALERTS ---------- */
+.alert {
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.alert-error {
+    background: #fdecea;
+    color: #b42318;
+    border: 1px solid #f5c2bd;
+}
+.alert-success {
+    background: #e8f5ec;
+    color: #1e6b3a;
+    border: 1px solid #b9dfc6;
+}
+
+/* ---------- LOGIN AND REGISTER ---------- */
+.auth-wrap {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    background: #fff;
+    padding: 36px;
+    border-radius: 10px;
+    border-top: 4px solid #d4a017;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+.auth-card h1 {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+.switch {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+/* ---------- DASHBOARD ---------- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+.container h1 {
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 26px;
+    margin-top: 24px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+}
+.checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+}
+.table-wrap {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+th,
+td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e6e9f0;
+}
+th {
+    color: #555;
+    font-size: 13px;
+}
+.badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #fff4d6;
+    color: #8a6500;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ---------- LANDING PAGE: HERO ---------- */
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    background-image:
+        linear-gradient(90deg, rgba(10, 25, 50, 0.9), rgba(10, 25, 50, 0.3)),
+        url("/images/image_hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+.hero-content {
+    max-width: 600px;
+}
+.hero-content small {
+    color: #e6b84a;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+.hero h1 {
+    font-size: 55px;
+    margin: 20px 0;
+    line-height: 1.15;
+}
+.hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 30px;
+}
+.primary-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #d4a017;
+    color: #14213d;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* ---------- LANDING PAGE: SECTIONS ---------- */
+.section {
+    padding: 70px 8%;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.section-title small {
+    color: #c29218;
+    letter-spacing: 2px;
+}
+.section-title h2 {
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.room-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+.room-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.room-info {
+    padding: 22px;
+}
+.room-info h3 {
+    margin-bottom: 12px;
+}
+.room-info p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+.price {
+    color: #c29218;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.service-card {
+    padding: 30px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+}
+.service-card h3 {
+    margin-bottom: 12px;
+    color: #14213d;
+}
+.service-card p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ---------- CLICKABLE ROOM CARDS ---------- */
+.room-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.room-link .room-card {
+    height: 100%;
+    border: 1px solid transparent;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+.room-link:hover .room-card,
+.room-link:focus-visible .room-card {
+    border-color: #d4a017;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.1);
+}
+.room-info .price {
+    display: block;
+}
+.room-action {
+    display: block;
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #14213d;
+}
+
+/* ---------- SELECTED ROOM (dashboard) ---------- */
+.selected-room {
+    background: #fff9e6;
+    border: 1px solid #ecd68a;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 14px;
+    margin: 14px 0 4px;
+}
+.room-selection-info h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.room-selection-info p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+}
+.room-selection-info .badge {
+    display: inline-block;
+    margin-top: 6px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #14213d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+footer span {
+    color: #d4a017;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero h1 {
+        font-size: 38px;
+    }
+    .rooms,
+    .services {
+        grid-template-columns: 1fr;
+    }
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
