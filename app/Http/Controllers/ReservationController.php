@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Room;
 use App\Models\Service;
 use Carbon\Carbon;
@@ -60,7 +61,7 @@ class ReservationController extends Controller
 
             // Many to Many: one row per service in reservation_services
             $reservation->services()->attach(
-                $services->mapWithKeys(fn ($s) => [$s->id => ['quantity' => 1, 'price' => $s->price]])->all()
+                $services->mapWithKeys(fn($s) => [$s->id => ['quantity' => 1, 'price' => $s->price]])->all()
             );
 
             return $reservation;
@@ -69,5 +70,45 @@ class ReservationController extends Controller
         // Post/Redirect/Get
         return redirect()->route('dashboard')
             ->with('status', 'Reservation created. Total: ₱' . number_format($reservation->total_amount, 2));
+    }
+
+    public function cancel(Request $request, Reservation $reservation)
+    {
+        // A user can only cancel their own reservation
+        abort_unless($reservation->user_id === $request->user()->id, 403);
+
+        $refunded = DB::transaction(function () use ($reservation) {
+            // Lock the row so two clicks cannot cancel (and refund) twice
+            $locked = Reservation::lockForUpdate()->findOrFail($reservation->id);
+
+            // Already cancelled (double click or repeated request): do nothing
+            if ($locked->status === 'cancelled') {
+                return null;
+            }
+
+            if (! $locked->canBeCancelled()) {
+                throw ValidationException::withMessages([
+                    'cancel' => 'This reservation can no longer be cancelled.',
+                ])->errorBag('cancel');
+            }
+
+            $paid = (float) $locked->payments()->where('status', 'paid')->sum('amount');
+
+            // Demo: payments are only marked as refunded, no money moves
+            $locked->payments()->where('status', 'paid')->update(['status' => 'refunded']);
+            $locked->update(['status' => 'cancelled']);
+
+            return $paid;
+        });
+
+        if ($refunded === null) {
+            return redirect()->route('dashboard');
+        }
+
+        $message = 'Reservation cancelled.'
+            . ($refunded > 0 ? ' Payments of ₱' . number_format($refunded, 2) . ' were marked as refunded (demo).' : '');
+
+        // Post/Redirect/Get: refreshing never repeats the cancellation
+        return redirect()->route('dashboard')->with('status', $message);
     }
 }
