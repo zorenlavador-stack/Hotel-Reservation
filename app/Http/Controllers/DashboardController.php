@@ -24,9 +24,13 @@ class DashboardController extends Controller
         // Room clicked on the landing page (?room=2). Null if missing or not available.
         $selectedRoom = $rooms->firstWhere('id', (int) $request->query('room'));
 
-        // One-time reservation token (kept from your version)
-        $token = (string) Str::uuid();
-        session(['reservation_token' => $token]);
+        // One-time tokens for the two forms on this page
+        $token        = (string) Str::uuid();
+        $paymentToken = (string) Str::uuid();
+        session([
+            'reservation_token' => $token,
+            'payment_token'     => $paymentToken,
+        ]);
 
         return view('dashboard', [
             'user'         => $user,
@@ -34,6 +38,7 @@ class DashboardController extends Controller
             'selectedRoom' => $selectedRoom,
             'services'     => Service::where('status', 'available')->orderBy('name')->get(),
             'token'        => $token,
+            'paymentToken' => $paymentToken,
         ]);
     }
 }

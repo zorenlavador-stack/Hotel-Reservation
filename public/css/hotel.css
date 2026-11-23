@@ -95,6 +95,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="date"],
+input[type="number"],
 select {
     width: 100%;
     padding: 11px 12px;
@@ -431,4 +432,129 @@ footer span {
     .grid-2 {
         grid-template-columns: 1fr;
     }
+}
+
+/* ---------- PAYMENT (dashboard) ---------- */
+.pay-box summary {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #14213d;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+}
+.pay-box summary::-webkit-details-marker {
+    display: none;
+}
+.pay-box form {
+    min-width: 240px;
+    margin-top: 12px;
+    padding: 14px;
+    background: #f8f9fc;
+    border: 1px solid #e6e9f0;
+    border-radius: 6px;
+}
+.pay-box form .btn {
+    width: 100%;
+    margin-top: 12px;
+}
+.pay-note {
+    font-size: 12px;
+    color: #777;
+    margin-top: 8px;
+}
+.badge-paid {
+    background: #e8f5ec;
+    color: #1e6b3a;
+}
+
+/* ---------- BUTTON SIZES AND COLORS ---------- */
+.btn-sm {
+    padding: 8px 14px;
+    font-size: 13px;
+}
+.btn-outline:hover {
+    background: #eef0f5;
+}
+.btn-danger {
+    background: #b42318;
+}
+.btn-danger:hover {
+    background: #912018;
+}
+.btn-danger-outline {
+    background: transparent;
+    color: #b42318 !important;
+    border: 1px solid #b42318;
+}
+.btn-danger-outline:hover {
+    background: #fdecea;
+}
+
+/* ---------- STATUS BADGES ---------- */
+.badge-confirmed {
+    background: #e8f5ec;
+    color: #1e6b3a;
+}
+.badge-cancelled {
+    background: #fdecea;
+    color: #b42318;
+}
+.muted-text {
+    color: #777;
+    font-size: 13px;
+}
+.row-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* ---------- MODAL ---------- */
+.modal {
+    border: 0;
+    border-radius: 10px;
+    padding: 0;
+    width: 92%;
+    max-width: 420px;
+    margin: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.modal::backdrop {
+    background: rgba(10, 25, 50, 0.55);
+}
+.modal form {
+    padding: 24px;
+}
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.modal-head h3 {
+    font-size: 20px;
+}
+.modal-close {
+    background: none;
+    border: 0;
+    font-size: 28px;
+    line-height: 1;
+    color: #777;
+    cursor: pointer;
+}
+.modal-sub {
+    font-size: 14px;
+    color: #555;
+    margin-top: 4px;
+}
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
